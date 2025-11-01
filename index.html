@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="src/output.css">
+  <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;500;600;700&family=Bricolage+Grotesque:wght@700&display=swap"
+    rel="stylesheet">
+
+  <title>Frontend Mentor | Weather app</title>
+</head>
+
+<body class="m-4">
+
+  <header class="flex flex-row justify-between m-3 sm:mx-20">
+    <img class="h-6" src="assets/images/logo.svg" alt="logo">
+    <button id="dropdown-menu-btn"
+      class="flex items-center gap-2 bg-neutral-700 text-neutral-0 p-2 rounded-md hover:bg-neutral-600 transition">
+      <img class="h-4" src="assets/images/icon-units.svg" alt="icon-units">
+      <h6 class="text-xs">Units</h6>
+      <img class="h-2" src="assets/images/icon-dropdown.svg" alt="icon-dropdown">
+    </button>
+    <!--Drop menu untis-->
+    <div id="dropdown-menu"
+      class="hidden absolute right-0 mt-2 flex-col bg-neutral-700 text-neutral-0 rounded-md p-3 w-56 shadow-lg border border-neutral-600 z-10">
+      <p class="font-medium text-sm mb-2">Switch to Imperial</p>
+
+      <!-- Temperature -->
+      <div class="mb-3">
+        <p class="text-sm mb-1">Temperature</p>
+
+        <button data-group="temp" data-value="C"
+          class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+          <span>Celsius (°C)</span>
+          <span class="check hidden text-white ">✔</span>
+        </button>
+
+        <button data-group="temp" data-value="F"
+          class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+          <span>Fahrenheit (°F)</span>
+          <span class="check hidden text-white ">✔</span>
+        </button>
+      </div>
+
+      <!-- Wind Speed -->
+      <div class="mb-3">
+        <p class="text-sm mb-1">Wind Speed</p>
+
+        <button data-group="speed" data-value="kmh"
+          class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+          <span>km/h</span>
+          <span class="check hidden text-white">✔</span>
+        </button>
+
+        <button data-group="speed" data-value="mph"
+          class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+          <span>mph</span>
+          <span class="check hidden text-blue-400 font-bold">✔</span>
+        </button>
+      </div>
+
+      <!-- Precipitation -->
+      <div>
+        <p class="text-sm mb-1">Precipitation</p>
+
+        <button data-group="precip" data-value="mm"
+          class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+          <span>Millimeters (mm)</span>
+          <span class="check hidden text-blue-400 font-bold">✔</span>
+        </button>
+
+        <button data-group="precip" data-value="in"
+          class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+          <span>Inches (in)</span>
+          <span class="check hidden text-blue-400 font-bold">✔</span>
+        </button>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  <main class="sm:my-10 sm:mx-[5vw] sm:w-[90vw] sm:h-[90vh]">
+
+    <h1 class="font-semibold m-10 text-center text-5xl">How's the sky looking today?</h1>
+
+    <!--Search container-->
+    <div class="sm:flex sm:flex-row sm:items-center sm:justify-center sm:gap-4 mb-6 sm:mx-[20vw]">
+      <div class="relative w-92 sm:w-4/5">
+        <button id="searchBtn" class="absolute left-2 top-1/2 -translate-y-1/2 p-1 hover:scale-110 transition">
+          <img src="assets/images/icon-search.svg" alt="search" class="w-5 h-5">
+        </button>
+        <input id="cityInput" type="text" placeholder="Search for a place..."
+          class="w-full py-2 pl-12 pr-4 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-neutral-300 bg-gray-700">
+      </div>
+      <button class="bg-blue-500 text-white w-92 rounded-lg p-2 my-2 sm:w-1/5">Search</button>
+    </div>
+    <!--Show results-->
+    <section class="auto-grid">
+
+      <!--City date temperature-->
+      <div
+        class="w-full h-64 bg-today rounded-2xl my-4 flex flex-col justify-center items-center
+        sm:col-start-1 sm:col-end-4 sm:row-start-1 sm:row-end-3 sm:my-0 sm:mt-6 sm:h-[40vh] sm:flex-row sm:justify-between sm:px-6 ">
+        <div>
+          <h2>Berlin, Germany</h2>
+          <h3 class="sm:text-xs sm:text-neutral-300">Tuesday, Aug 5,2005</h3>
+        </div>
+        <div class="flex w-full items-center justify-between px-12 my-6 sm:my-0 sm:w-fit">
+          <img class="h-22" src="assets/images/icon-sunny.webp" alt="icon-sunny">
+          <h4 class="text-7xl"><i>68º</i></h4>
+        </div>
+      </div>
+
+      <!-- For data fields-->
+      <div class="grid grid-cols-2 grid-rows-2 gap-4 w-full mx-auto my-4 
+        sm:flex sm:flex-row sm:mx-0 sm:my-0 sm:col-start-1 sm:col-end-4 sm:row-start-3 sm:row-end-3 ">
+        <div class="data-fields">
+          <h3>Feels like</h3>
+          <h4>64º</h4>
+        </div>
+
+        <div class="data-fields">
+          <h3>Humidity</h3>
+          <h4>46%</h4>
+        </div>
+
+        <div class="data-fields">
+          <h3>Wind</h3>
+          <h4>9 mph</h4>
+        </div>
+
+        <div class="data-fields">
+          <h3>Precipitation</h3>
+          <h4>0 in</h4>
+        </div>
+
+      </div>
+
+      <!--Daily forecast-->
+      <div class="my-2 sm:col-start-1 sm:col-end-4 sm:row-start-4 sm:row-end-4">
+        <h2 class="my-4"> Daily forecast</h2>
+        <div class="grid grid-cols-3 grid-rows-3 gap-4
+        sm:flex sm:flex-row">
+          <div class="daily-fields">
+            <h3>Tue</h3>
+            <img src="assets/images/icon-rain.webp" alt="icon-rain">
+            <div>
+              <h4>68º</h4>
+              <h4>57º</h4>
+            </div>
+          </div>
+
+          <div class="daily-fields">
+            <h3>Wed</h3>
+            <img src="assets/images/icon-rain.webp" alt="icon-rain">
+            <div>
+              <h4>68º</h4>
+              <h4>57º</h4>
+            </div>
+          </div>
+
+          <div class="daily-fields">
+            <h3>Thu</h3>
+            <img src="assets/images/icon-rain.webp" alt="icon-rain">
+            <div>
+              <h4>68º</h4>
+              <h4>57º</h4>
+            </div>
+          </div>
+
+          <div class="daily-fields">
+            <h3>Fri</h3>
+            <img src="assets/images/icon-rain.webp" alt="icon-rain">
+            <div>
+              <h4>68º</h4>
+              <h4>57º</h4>
+            </div>
+          </div>
+
+          <div class="daily-fields">
+            <h3>Sat</h3>
+            <img src="assets/images/icon-rain.webp" alt="icon-rain">
+            <div>
+              <h4>68º</h4>
+              <h4>57º</h4>
+            </div>
+          </div>
+
+          <div class="daily-fields">
+            <h3>Sun</h3>
+            <img src="assets/images/icon-rain.webp" alt="icon-rain">
+            <div>
+              <h4>68º</h4>
+              <h4>57º</h4>
+            </div>
+          </div>
+
+          <div class="daily-fields">
+            <h3>Mon</h3>
+            <img src="assets/images/icon-rain.webp" alt="icon-rain">
+            <div>
+              <h4>68º</h4>
+              <h4>57º</h4>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!--Hourly forecast-->
+      <div class="rounded-2xl bg-neutral-700 p-4 flex flex-col gap-4 mt-6
+      sm:row-start-1 sm:row-end-5 sm:col-start-4 sm:col-end-5">
+        <div class="flex flex-row justify-between">
+          <h2>Hourly forecast</h2>
+
+          <!--dropdown menu for days-->
+          <div class="relative">
+            <button id="dropdown-day-menu-btn"
+              class="flex flex-row items-center gap-4 bg-neutral-600 p-1 px-3 rounded-md">
+              <h6 id="daySet" class="text-xs p-1">Tuesday</h6>
+              <img class="h-2" src="assets/images/icon-dropdown.svg" alt="icon-dropdown">
+            </button>
+
+            <div id="dropdown-day-menu"
+              class="mb-3 hidden absolute right-0 mt-2 flex-col bg-neutral-700 text-neutral-0 rounded-md p-3 w-56 shadow-lg border border-neutral-600 z-10">
+              <button data-group="days" data-value="A"
+                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                <span>Monday</span>
+                <span class="check hidden text-white">✔</span>
+              </button>
+
+              <button data-group="days" data-value="B"
+                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                <span>Tuesday</span>
+                <span class="check hidden text-white">✔</span>
+              </button>
+
+              <button data-group="days" data-value="C"
+                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                <span>Wednesday</span>
+                <span class="check hidden text-white">✔</span>
+              </button>
+
+              <button data-group="days" data-value="D"
+                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                <span>Thursday</span>
+                <span class="check hidden text-white">✔</span>
+              </button>
+
+              <button data-group="days" data-value="F"
+                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                <span>Friday</span>
+                <span class="check hidden text-white">✔</span>
+              </button>
+
+              <button data-group="days" data-value="E"
+                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                <span>Saturday</span>
+                <span class="check hidden text-white">✔</span>
+              </button>
+
+              <button data-group="days" data-value="G"
+                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                <span>Sunday</span>
+                <span class="check hidden text-white">✔</span>
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+        <!--hours-->
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>3 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>3 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>3 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>3 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>4 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>5 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>6 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>7 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>8 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>9 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+        <div class="hours-fields">
+          <div>
+            <img src="assets/images/icon-fog.webp" alt="icon-fog">
+            <h3>10 PM</h3>
+          </div>
+          <h4>68º</h4>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+</body>
+
+<script src="src/script.js"></script>
+
+</html>

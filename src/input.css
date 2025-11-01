@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* Define your custom theme variables */
+@theme {
+  /* 🎨 Colors */
+  --color-neutral-900: hsl(243, 96%, 9%);
+  --color-neutral-800: hsl(243, 27%, 20%);
+  --color-neutral-700: hsl(243, 23%, 24%);
+  --color-neutral-600: hsl(243, 23%, 30%);
+  --color-neutral-300: hsl(240, 6%, 70%);
+  --color-neutral-200: hsl(250, 6%, 84%);
+  --color-neutral-0: hsl(0, 0%, 100%);
+
+  --color-orange-500: hsl(28, 100%, 52%);
+  --color-blue-500: hsl(233, 67%, 56%);
+  --color-blue-700: hsl(248, 70%, 36%);
+
+  /* ✍️ Typography */
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-bricolage: "Bricolage Grotesque", sans-serif;
+
+  --text-base: 18px;
+}
+
+@layer utilities {
+  .bg-today {
+    background-image: url("../assets/images/bg-today-small.svg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  @media (min-width: 640px) {
+    .bg-today {
+      background-image: url("../assets/images/bg-today-large.svg");
+      background-size: cover;
+      background-position: center;
+    }
+  }
+}
+
+/* Optionally define base styles */
+@layer base {
+  body {
+    font-family: var(--font-dm-sans);
+    font-size: var(--text-base);
+    color: var(--color-white);
+    background-color: var(--color-neutral-900);
+  }
+
+  h1,
+  h5,
+  h6 {
+    font-family: var(--font-bricolage);
+  }
+}
+
+.data-fields {
+  @apply rounded-xl bg-neutral-700 px-6 py-4 sm:w-full sm:py-0;
+}
+
+.data-fields h3 {
+  @apply font-light text-neutral-300 my-4;
+}
+
+.data-fields h4 {
+  @apply text-4xl text-neutral-200 mb-2;
+}
+
+.daily-fields {
+  @apply rounded-xl bg-neutral-700 p-4 sm:w-full;
+}
+
+.daily-fields h3 {
+  @apply text-center text-neutral-200;
+}
+
+.daily-fields img {
+  @apply h-14 text-center my-4 mx-auto sm:h-10;
+}
+
+.daily-fields div {
+  @apply flex flex-row justify-between text-neutral-100 font-light text-sm sm:gap-2;
+}
+
+.hours-fields {
+  @apply flex flex-row gap-4 items-center justify-between rounded-lg bg-neutral-600 px-6;
+}
+
+.hours-fields img {
+  @apply h-12 text-center;
+}
+
+.hours-fields div {
+  @apply flex flex-row items-center gap-3;
+}
+
+label {
+  @apply flex justify-between items-center;
+}
+
+#dropdown-menu {
+  @apply text-sm font-light;
+}
+
+#dropdown-menu div p {
+  @apply text-neutral-300 text-xs;
+}
+
+#dropdown-day-menu span {
+  @apply text-sm font-light;
+}
+
+/* No styles for .auto-grid on mobile */
+.auto-grid {
+  display: block;
+}
+
+/* On screens 640px and wider */
+@media (min-width: 640px) {
+  .auto-grid {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: repeat(5, auto);
+    gap: 1.5rem;
+  }
+}
