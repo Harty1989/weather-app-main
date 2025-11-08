@@ -39,6 +39,17 @@ dropdownDayMenuBtn.addEventListener("click", () => {
   dropdownDayMenu.classList.toggle("flex");
 });
 
+// Close when clicking outside
+document.addEventListener("click", (e) => {
+  if (
+    !dropdownDayMenuBtn.contains(e.target) &&
+    !dropdownDayMenu.contains(e.target)
+  ) {
+    dropdownDayMenu.classList.add("hidden");
+    dropdownDayMenu.classList.remove("flex");
+  }
+});
+
 //selection day
 const dayButtons = document.querySelectorAll('[data-group="days"]');
 const daySet = document.getElementById("daySet");

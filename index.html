@@ -91,13 +91,14 @@
     <!--Search container-->
     <div class="sm:flex sm:flex-row sm:items-center sm:justify-center sm:gap-4 mb-6 sm:mx-[20vw]">
       <div class="relative w-92 sm:w-4/5">
-        <button id="searchBtn" class="absolute left-2 top-1/2 -translate-y-1/2 p-1 hover:scale-110 transition">
+        <button class="searchBtn absolute left-2 top-1/2 -translate-y-1/2 p-1">
           <img src="assets/images/icon-search.svg" alt="search" class="w-5 h-5">
         </button>
         <input id="cityInput" type="text" placeholder="Search for a place..."
           class="w-full py-2 pl-12 pr-4 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-neutral-300 bg-gray-700">
       </div>
-      <button class="bg-blue-500 text-white w-92 rounded-lg p-2 my-2 sm:w-1/5">Search</button>
+      <button
+        class="searchBtn bg-blue-500 text-white w-92 rounded-lg p-2 my-2 sm:w-1/5  hover:scale-110 transition">Search</button>
     </div>
     <!--Show results-->
     <section class="auto-grid">
@@ -107,12 +108,12 @@
         class="w-full h-64 bg-today rounded-2xl my-4 flex flex-col justify-center items-center
         sm:col-start-1 sm:col-end-4 sm:row-start-1 sm:row-end-3 sm:my-0 sm:mt-6 sm:h-[40vh] sm:flex-row sm:justify-between sm:px-6 ">
         <div>
-          <h2>Berlin, Germany</h2>
-          <h3 class="sm:text-xs sm:text-neutral-300">Tuesday, Aug 5,2005</h3>
+          <h2 id="city-country-name">Berlin, Germany</h2>
+          <h3 id="curent-date" class="sm:text-xs sm:text-neutral-300">Tuesday, Aug 5,2005</h3>
         </div>
         <div class="flex w-full items-center justify-between px-12 my-6 sm:my-0 sm:w-fit">
-          <img class="h-22" src="assets/images/icon-sunny.webp" alt="icon-sunny">
-          <h4 class="text-7xl"><i>68º</i></h4>
+          <img id="weather-icon" class="h-22" src="assets/images/icon-sunny.webp" alt="icon-sunny">
+          <h4 id="curent-temperature" class="text-7xl">68º</h4>
         </div>
       </div>
 
@@ -121,22 +122,22 @@
         sm:flex sm:flex-row sm:mx-0 sm:my-0 sm:col-start-1 sm:col-end-4 sm:row-start-3 sm:row-end-3 ">
         <div class="data-fields">
           <h3>Feels like</h3>
-          <h4>64º</h4>
+          <h4 id="feelslike-temperature">64º</h4>
         </div>
 
         <div class="data-fields">
           <h3>Humidity</h3>
-          <h4>46%</h4>
+          <h4 id="humidity">46%</h4>
         </div>
 
         <div class="data-fields">
           <h3>Wind</h3>
-          <h4>9 mph</h4>
+          <h4 id="wind-speed">9 mph</h4>
         </div>
 
         <div class="data-fields">
           <h3>Precipitation</h3>
-          <h4>0 in</h4>
+          <h4 id="precipitation">0 in</h4>
         </div>
 
       </div>
@@ -229,43 +230,43 @@
             <div id="dropdown-day-menu"
               class="mb-3 hidden absolute right-0 mt-2 flex-col bg-neutral-700 text-neutral-0 rounded-md p-3 w-56 shadow-lg border border-neutral-600 z-10">
               <button data-group="days" data-value="A"
-                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                class=" option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
                 <span>Monday</span>
                 <span class="check hidden text-white">✔</span>
               </button>
 
               <button data-group="days" data-value="B"
-                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                class=" option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
                 <span>Tuesday</span>
                 <span class="check hidden text-white">✔</span>
               </button>
 
               <button data-group="days" data-value="C"
-                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                class=" option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
                 <span>Wednesday</span>
                 <span class="check hidden text-white">✔</span>
               </button>
 
               <button data-group="days" data-value="D"
-                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                class=" option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
                 <span>Thursday</span>
                 <span class="check hidden text-white">✔</span>
               </button>
 
               <button data-group="days" data-value="F"
-                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                class=" option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
                 <span>Friday</span>
                 <span class="check hidden text-white">✔</span>
               </button>
 
               <button data-group="days" data-value="E"
-                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                class=" option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
                 <span>Saturday</span>
                 <span class="check hidden text-white">✔</span>
               </button>
 
               <button data-group="days" data-value="G"
-                class="option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
+                class=" option-row flex justify-between items-center w-full py-1 px-2 rounded-md hover:bg-neutral-600">
                 <span>Sunday</span>
                 <span class="check hidden text-white">✔</span>
               </button>
@@ -336,27 +337,6 @@
           </div>
           <h4>68º</h4>
         </div>
-        <div class="hours-fields">
-          <div>
-            <img src="assets/images/icon-fog.webp" alt="icon-fog">
-            <h3>8 PM</h3>
-          </div>
-          <h4>68º</h4>
-        </div>
-        <div class="hours-fields">
-          <div>
-            <img src="assets/images/icon-fog.webp" alt="icon-fog">
-            <h3>9 PM</h3>
-          </div>
-          <h4>68º</h4>
-        </div>
-        <div class="hours-fields">
-          <div>
-            <img src="assets/images/icon-fog.webp" alt="icon-fog">
-            <h3>10 PM</h3>
-          </div>
-          <h4>68º</h4>
-        </div>
 
       </div>
     </section>
@@ -365,5 +345,7 @@
 </body>
 
 <script src="src/script.js"></script>
+<script src="src/data.js"></script>
+<script src="src/maniputalitonDom.js"></script>
 
 </html>
