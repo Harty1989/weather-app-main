@@ -206,8 +206,6 @@ document.querySelectorAll(".option-row").forEach((btn) => {
     // update selected option
     selectedOptions[group] = value;
 
-    console.log("✅ Current selections:", selectedOptions);
-
     if (selectedOptions.speed === "kmh") {
       if (windSpeedDisplay.textContent.slice(-4) != "km/h") {
         const wind = Math.round(
@@ -228,7 +226,7 @@ document.querySelectorAll(".option-row").forEach((btn) => {
 
     if (selectedOptions.precip === "in") {
       if (precipitationDisplay.textContent.trim().endsWith("in")) {
-        return;
+        //  return;
       }
       const prep = Math.round(
         Number(precipitationDisplay.textContent.slice(0, -3))
@@ -241,7 +239,7 @@ document.querySelectorAll(".option-row").forEach((btn) => {
     }
     if (selectedOptions.precip === "mm") {
       if (precipitationDisplay.textContent.trim().endsWith("mm")) {
-        return;
+        // return;
       }
       const prep = Math.round(
         Number(precipitationDisplay.textContent.slice(0, -3)) * 25.4
@@ -250,7 +248,7 @@ document.querySelectorAll(".option-row").forEach((btn) => {
     }
 
     if (selectedOptions.temp == "F") {
-      if (curentTemperatureDisplay.textContent.slice(-1) == "º") return;
+      if (curentTemperatureDisplay.textContent.slice(-1) == "F") return;
       convertCelsiuestoFahrenheit(curentTemperatureDisplay);
       convertCelsiuestoFahrenheit(feelslikeTemperatureDisplay);
 
@@ -267,7 +265,7 @@ document.querySelectorAll(".option-row").forEach((btn) => {
     }
 
     if (selectedOptions.temp == "C") {
-      if (curentTemperatureDisplay.textContent.slice(-1) == "F") return;
+      if (curentTemperatureDisplay.textContent.slice(-1) == "º") return;
       convertFahrenheirtoCelsius(curentTemperatureDisplay);
       convertFahrenheirtoCelsius(feelslikeTemperatureDisplay);
       dailyFields.forEach((field) => {
@@ -283,3 +281,5 @@ document.querySelectorAll(".option-row").forEach((btn) => {
     }
   });
 });
+
+
